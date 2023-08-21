@@ -17,3 +17,9 @@ npx playwright test
 ```bash
 npx playwright test --ui
 ```
+
+- SHOW REPORT
+
+```bash
+npx playwright show-report
+```
