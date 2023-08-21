@@ -11,3 +11,9 @@ yarn
 ```bash
 npx playwright test
 ```
+
+- UI MODE
+
+```bash
+npx playwright test --ui
+```
