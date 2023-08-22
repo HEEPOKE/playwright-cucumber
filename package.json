@@ -6,10 +6,13 @@
   "author": "Poundpitak Amornlerdlittichai <Damon1fx@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@playwright/test": "^1.37.1"
+    "@cucumber/cucumber": "^9.4.0",
+    "@playwright/test": "^1.37.1",
+    "ts-node": "^10.9.1"
   },
   "scripts": {
     "pretest": "tsc --incremental -p tests/tsconfig.json",
-    "test": "playwright test -c tests-out"
+    "test": "playwright test -c tests-out",
+    "e2e:test": "cucumber-js test"
   }
 }
