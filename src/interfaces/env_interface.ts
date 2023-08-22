@@ -1,4 +1,6 @@
 export default interface ConfigEnvironment {
-  baseUrl: string;
-  searchSong: string;
+  BASE_URL: string;
+  BROWSER: string;
+  HEAD: string | boolean;
+  SEARCH_SONG: string;
 }

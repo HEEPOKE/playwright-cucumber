@@ -17,8 +17,10 @@ if (environment === "local") {
 dotenv.config({ path: envFilePath });
 
 const config: ConfigEnvironment = {
-  baseUrl: process.env.BASE_URL || "",
-  searchSong: process.env.SEARCH_SONG || "",
+  BASE_URL: process.env.BASE_URL || "",
+  BROWSER: process.env.BROWSER || "chrome",
+  HEAD: process.env.HEAD || true,
+  SEARCH_SONG: process.env.SEARCH_SONG || "",
 };
 
 export default config;
