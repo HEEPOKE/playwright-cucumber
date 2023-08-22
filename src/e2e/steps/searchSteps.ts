@@ -1,5 +1,6 @@
 import { Given, When, Then, After } from "@cucumber/cucumber";
 import { Browser, Page, expect, chromium } from "@playwright/test";
+import config from "../../configs/config";
 
 let browser: Browser;
 let page: Page;
@@ -7,7 +8,7 @@ let page: Page;
 Given("I open the YouTube website", async () => {
   browser = await chromium.launch({ headless: false });
   page = await browser.newPage();
-  await page.goto("https://www.youtube.com");
+  await page.goto(config.baseUrl);
 });
 
 When("I search for {string}", async (searchQuery: string) => {
