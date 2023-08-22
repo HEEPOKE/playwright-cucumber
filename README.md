@@ -8,11 +8,12 @@ yarn
 
 ## Setting Cucumber Extensions
 
-- go to settings
+- go to settings for e2e test
 - search cucumber
 - then edit settings.json find cucumber.features
 - add ```"src/e2e/features/*.feature",``` this in cucumber.features
 - then add this ```"cucumber.glue": ["src/e2e/steps/*.ts"]``` after cucumber.features
+- If you want to do an integration test, use the folder integration and do the same thing a moment ago.
 
 ## Run
 
