@@ -15,6 +15,10 @@ yarn
 - then add this ```"cucumber.glue": ["src/e2e/steps/*.ts"]``` after cucumber.features
 - If you want to do an integration test, use the folder integration and do the same thing a moment ago.
 
+## Config Environments
+
+- can config local, uat, prod in configs/config.ts line at 4
+
 ## Run
 
 ```bash
