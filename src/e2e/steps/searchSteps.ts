@@ -22,6 +22,11 @@ Given("I open the YouTube website", async () => {
   pageFixture.logger.info("Navigated to YouTube");
 });
 
+Given('I open the YouTube website', async function () {
+  await pageFixture.page.goto(config.BASE_URL);
+  pageFixture.logger.info("Navigated to YouTube")
+})
+
 When("I search for {string}", async (searchQuery: string) => {
   await searchPage.searchForVideo(searchQuery);
   pageFixture.logger.info(`Searching for song: ${searchQuery}`);

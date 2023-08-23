@@ -5,9 +5,12 @@ import * as fs from "fs-extra";
 import fixture from "./fixture";
 import optionsLogger from "../utils/logger";
 import invokeBrowser from "../helpers/browsers";
+import Assert from "../helpers/wrapper/assert";
+import config from "../configs/config";
 
 let browser: Browser;
 let context: BrowserContext;
+let assert: Assert;
 let level: string = "info";
 
 async function setUpBrowser() {
