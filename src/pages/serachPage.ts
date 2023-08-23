@@ -1,14 +1,11 @@
 import { Page } from "@playwright/test";
 import PlaywrightWrapper from "../helpers/wrapper/PlaywrightWrappers";
 
-export default class SearchPage {
+class SearchPage {
   private base: PlaywrightWrapper;
 
   constructor(private page: Page) {
     this.base = new PlaywrightWrapper(page);
-  }
-  async goTo(url:string) {
-    await this.base.goto(url);
   }
 
   async searchForVideo(searchQuery: string) {
@@ -29,3 +26,5 @@ export default class SearchPage {
     return searchResults.length;
   }
 }
+
+export default SearchPage;

@@ -1,51 +1,43 @@
 import { Given, When, Then, After } from '@cucumber/cucumber';
-import { Browser, Page, expect, chromium } from "@playwright/test";
+import { Browser, chromium } from "@playwright/test";
 import config from "../../configs/config";
 import pageFixture from "../../hooks/fixture";
+import MainAction from '../../pages';
+import PlayPage from '../../pages/playPage';
 
 let browser: Browser;
-let page: Page;
+let playPage: PlayPage;
+let mainAction: MainAction;
 
-Given('I am on the YouTube website', async () => {
+Given("I open the YouTube website",async () => {
   browser = await chromium.launch({ headless: false });
-  page = await browser.newPage();
-  await page.goto(config.BASE_URL);
-  pageFixture.logger.info("Navigation to Youtube")
+  const playwrightPage = await browser.newPage();
+  playPage = new PlayPage(playwrightPage);
+  mainAction = new MainAction(playwrightPage);
+  await mainAction.goTo(config.BASE_URL);
+  pageFixture.logger.info('Navigated to YouTube');
 });
 
-When('I search for the video {string}', async (videoName: string) => {
-  await page.fill('input#search', videoName);
-  await page.click('button#search-icon-legacy');
-});
-
-When('I select the video {string}', async (videoTitle: string) => {
-  await page.click(`text="${videoTitle}"`);
-  await page.waitForSelector('button.ytp-play-button');
-});
-
-Then('the video should start playing', async () => {
-  const isPlaying = await page.$eval('button.ytp-play-button', (btn) => {
-    return !btn.getAttribute('aria-label')?.includes('Play');
-  });
-  expect(isPlaying).toBeTruthy;
+When('I search for the video {string}', async (videoTitle: string) => {
+  await playPage.searchAndPlayVideo(videoTitle);
+  pageFixture.logger.info(`Search and play video: ${videoTitle}`);
 });
 
 When('the user clicks the "Pause" button', async () => {
-  await page.click('button.ytp-play-button');
+  await playPage.pauseVideo();
+  pageFixture.logger.info('Pause the video');
 });
 
 When('the user selects a different video quality', async () => {
-  await page.click('button.ytp-settings-button');
-  await page.click('text=Quality');
-  await page.click('text=720p');
-  await page.click('button.ytp-settings-button');
+  const qualityOption = '360p';
+  await playPage.changeVideoQuality(qualityOption);
+  pageFixture.logger.info(`Change video quality to ${qualityOption}`);
 });
 
 Then('the video quality should change accordingly', async () => {
-  const newQuality = '360p';
-  await page.waitForSelector(`text=${newQuality}`);
-  const currentQualityLabel = await page.textContent('div.ytp-menuitem-checked');
-  expect(currentQualityLabel).toEqual(newQuality);
+  const newQuality = '720p';
+  await playPage.checkVideoQuality(newQuality);
+  pageFixture.logger.info('Video quality changed accordingly');
 });
 
 After(async () => {
