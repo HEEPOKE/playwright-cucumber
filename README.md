@@ -49,3 +49,9 @@ yarn post:test
 ```bash
 yarn test:failed
 ```
+
+- Test Clean Folder
+
+```bash
+yarn test:clean
+```

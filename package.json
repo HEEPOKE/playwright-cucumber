@@ -14,7 +14,8 @@
     "test": "cucumber-js --config=src/configs/cucumber.js || true",
     "pretest": "npx ts-node src/helpers/reports/init.ts",
     "post:test": "npx ts-node src/helpers/reports/report.ts",
-    "test:failed": "cucumber-js -p rerun @rerun.txt"
+    "test:failed": "cucumber-js -p rerun @rerun.txt",
+    "test:clean": "rm -rf results @rerun.txt"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^9.4.0",
