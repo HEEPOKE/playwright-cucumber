@@ -4,17 +4,21 @@ import config from "../../configs/config";
 import pageFixture from "../../hooks/fixture";
 import MainAction from "../../pages";
 import SearchPage from "../../pages/serachPage";
+import Assert from "../../helpers/wrapper/assert";
 
 let browser: Browser;
 let searchPage: SearchPage;
 let mainAction: MainAction;
+let assert: Assert;
 
 Given("I open the YouTube website", async () => {
   browser = await chromium.launch({ headless: false });
   const playwrightPage = await browser.newPage();
   searchPage = new SearchPage(playwrightPage);
   mainAction = new MainAction(playwrightPage);
+  assert = new Assert(pageFixture.page);
   await mainAction.goTo(config.BASE_URL);
+  await assert.assertURL(config.BASE_URL);
   pageFixture.logger.info("Navigated to YouTube");
 });
 
