@@ -7,7 +7,7 @@ function optionsLogger(options: LoggerOptions) {
   return {
     transports: [
       new transports.File({
-        filename: `test-results/logs/${scenarioName}/log.log`,
+        filename: `results/logs/${scenarioName}/log.log`,
         level,
         format: format.combine(
           format.timestamp({ format: 'DD-MMM-YYYY HH:mm:ss' }),
