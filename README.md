@@ -19,6 +19,10 @@ yarn
 
 - can config local, uat, prod in configs/config.ts line at 4
 
+## Config Environment
+
+- BROWSER in .env file can use ```chrome```,```firefox```,```safari```
+
 ## Run
 
 ```bash

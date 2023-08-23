@@ -21,6 +21,7 @@
     "@playwright/test": "^1.37.1",
     "dotenv": "^16.3.1",
     "multiple-cucumber-html-reporter": "^3.4.0",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "winston": "^3.10.0"
   }
 }

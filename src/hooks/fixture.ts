@@ -1,10 +1,11 @@
-import { Page } from "@playwright/test";
-import { Logger } from "winston";
+import { Page } from '@playwright/test';
+import { Logger } from 'winston';
 
-const fixture = {
-  // @ts-ignore
-  page: undefined as Page,
-  logger: undefined as Logger,
-};
+interface Fixture {
+  page?: Page;
+  logger?: Logger;
+}
 
-export default fixture;
+const pageFixture: Fixture = {};
+
+export default pageFixture;

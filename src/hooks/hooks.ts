@@ -1,14 +1,15 @@
 import { BeforeAll, AfterAll, Before, After, Status } from "@cucumber/cucumber";
 import { Browser, BrowserContext } from "@playwright/test";
-import { invokeBrowser } from "../helper/browsers/browserManager";
 import { getEnv } from "../helper/env/env";
 import { createLogger } from "winston";
-import { options } from "../helper/util/logger";
 import fixture from "./fixture";
+import optionsLogger from "../utils/logger";
+import invokeBrowser from "../helpers/browsers";
 const fs = require("fs-extra");
 
 let browser: Browser;
 let context: BrowserContext;
+let level: string = "info";
 
 BeforeAll(async function () {
   getEnv();
@@ -24,7 +25,7 @@ Before(async function ({ pickle }) {
   });
   const page = await context.newPage();
   fixture.page = page;
-  fixture.logger = createLogger(options(scenarioName));
+  fixture.logger = createLogger(optionsLogger({scenarioName, level}));
 });
 
 Before("@auth", async function ({ pickle }) {
@@ -37,7 +38,7 @@ Before("@auth", async function ({ pickle }) {
   });
   const page = await context.newPage();
   fixture.page = page;
-  fixture.logger = createLogger(options(scenarioName));
+  fixture.logger = createLogger(optionsLogger({scenarioName, level}));
 });
 
 After(async function ({ pickle, result }) {
