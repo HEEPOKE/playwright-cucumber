@@ -20,20 +20,32 @@ yarn
 - can config local, uat, prod in configs/config.ts line at 4
 - BROWSER in .env file can use ```chrome```,```firefox```,```safari```
 
+## Config Cucumber
+
+- can config cucumber go to ```src/configs/cucumber.js``` for config
+
 ## Run
 
+- Test
+
 ```bash
-npx playwright test
+yarn test
 ```
 
-- UI MODE
+- PreTest
 
 ```bash
-npx playwright test --ui
+yarn pretest
 ```
 
-- SHOW REPORT
+- Test && Report
 
 ```bash
-npx playwright show-report
+yarn post:test
+```
+
+- Test Fail Rerun
+
+```bash
+yarn test:failed
 ```
