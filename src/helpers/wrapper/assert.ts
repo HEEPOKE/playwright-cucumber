@@ -3,21 +3,31 @@ import { expect, Page } from '@playwright/test';
 class Assert {
   constructor(private page: Page) {}
 
-  async assertTitle(title: string) {
-    await expect(this.page).toHaveTitle(title);
+  async pageTitle() {
+    return await this.page.title();
   }
 
-  async assertTitleContains(title: string) {
-    const pageTitle = await this.page.title();
-    expect(pageTitle).toContain(title);
+  async pageURL() {
+    return await this.page.url();
   }
 
-  async assertURL(url: string) {
-    await expect(this.page).toHaveURL(url);
+  async assertTitle(expectedTitle: string) {
+    const pageTitle = await this.pageTitle();
+    expect(pageTitle).toBe(expectedTitle);
+  }
+
+  async assertTitleContains(titleFragment: string) {
+    const pageTitle = await this.pageTitle();
+    expect(pageTitle).toContain(titleFragment);
+  }
+
+  async assertURL(expectedURL: string) {
+    const pageURL = await this.pageURL();
+    expect(pageURL).toBe(expectedURL);
   }
 
   async assertURLContains(fragment: string) {
-    const pageURL = await this.page.url();
+    const pageURL = await this.pageURL();
     expect(pageURL).toContain(fragment);
   }
 }
