@@ -1,4 +1,4 @@
-import { expect, Page } from '@playwright/test';
+import { expect, Page } from "@playwright/test";
 
 class Assert {
   constructor(private page: Page) {}

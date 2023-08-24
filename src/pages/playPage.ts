@@ -3,6 +3,12 @@ import { Page, expect } from "@playwright/test";
 class PlayPage {
   constructor(private page: Page) {}
 
+  async waitForPlayButton() {
+    await this.page.waitForSelector("button.ytp-play-button", {
+      timeout: 50000,
+    });
+  }
+
   async searchAndPlayVideo(videoTitle: string) {
     await this.page.fill("input#search", videoTitle);
     await this.page.press("input#search", "Enter");

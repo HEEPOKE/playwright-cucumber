@@ -2,24 +2,28 @@ import { Given, When, Then } from "@cucumber/cucumber";
 import { Browser, expect } from "@playwright/test";
 import PlayPage from "../../pages/playPage";
 import invokeBrowser from "../../helpers/browsers";
-import MainAction from "../../pages";
 import Assert from "../../helpers/wrapper/assert";
 import config from "../../configs/config";
 import fixture from "../../hooks/fixture";
+import PlaywrightWrapper from "../../helpers/wrapper/PlaywrightWrappers";
 
 let browser: Browser;
 let playPage: PlayPage;
-let mainAction: MainAction;
+let mainAction: PlaywrightWrapper;
 let assert: Assert;
 
 Given("I am on the YouTube website", async () => {
   browser = await invokeBrowser();
   const playwrightPage = await browser.newPage();
   playPage = new PlayPage(playwrightPage);
-  mainAction = new MainAction(playwrightPage);
+  mainAction = new PlaywrightWrapper(playwrightPage);
   assert = new Assert(fixture.page);
-  await mainAction.goTo(config.BASE_URL);
+  console.log("Expected URL:", config.BASE_URL);
+  console.log("Current URL before navigation:", playwrightPage.url());
+  await mainAction.goto(config.BASE_URL);
   await assert.assertURL(config.BASE_URL);
+  console.log("Current URL after navigation:", playwrightPage.url());
+  await mainAction.navigateTo(config.BASE_URL);
   fixture.logger.info("Navigated to YouTube");
 });
 
