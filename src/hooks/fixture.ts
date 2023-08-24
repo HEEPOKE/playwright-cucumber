@@ -6,6 +6,6 @@ interface Fixture {
   logger?: Logger;
 }
 
-const pageFixture: Fixture = {};
+const fixture: Fixture = {};
 
-export default pageFixture;
+export default fixture;
