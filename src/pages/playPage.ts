@@ -2,30 +2,20 @@ import { Page, expect } from "@playwright/test";
 
 class PlayPage {
   constructor(private page: Page) {
-    this.page = page
+    this.page = page;
   }
 
-  async waitForPlayButton() {
-    await this.page.waitForSelector("button.ytp-play-button", {
-      timeout: 50000,
-    });
+  async searchForVideo(videoTitle: string) {
+    await this.page.fill("input#search", videoTitle);
+    await this.page.press("input#search", "Enter");
   }
 
-  async searchAndPlayVideo(videoTitle: string) {
-    // await this.page.fill("input#search", videoTitle);
-    // await this.page.press("input#search", "Enter");
-    await this.page.locator("input.ytd-searchbox").press(videoTitle);
-    await this.page.click(`text="${videoTitle}"`);
-    await this.page.waitForSelector("button.ytp-play-button");
-  }
-
-  async selectVideo(videoTitle: string) {
-    await this.page.click(`text="${videoTitle}"`);
-  }
-
-  async isVideoPlaying() {
-    const playButton = await this.page.locator("button.ytp-play-button");
-    return !(await playButton.isDisabled());
+  async playVideo(videoTitle: string) {
+    const videoSelector = `yt-formatted-string:has-text("${videoTitle}")`;
+    await this.page.waitForSelector(videoSelector, { state: "visible", timeout: 60000 });
+    const videoElement = await this.page.locator(videoSelector);
+    await videoElement.click();
+    await this.page.waitForSelector("video", { state: "visible" });
   }
 
   async isVideoPaused() {

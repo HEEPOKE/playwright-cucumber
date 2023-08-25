@@ -15,7 +15,7 @@ class PlaywrightWrapper {
 
   async navigateTo(link: string) {
     await Promise.all([
-      this.page.waitForURL(link, { timeout: 50000 }),
+      this.page.waitForURL(link),
       this.page.click(link),
     ]);
   }

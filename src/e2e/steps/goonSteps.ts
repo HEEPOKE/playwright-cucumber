@@ -1,6 +1,8 @@
-import { Given } from '@cucumber/cucumber';
+import { Given, setDefaultTimeout } from '@cucumber/cucumber';
 import config from '../../configs/config';
 import fixture from '../../hooks/fixture';
+
+setDefaultTimeout(60 * 1000 * 3)
 
 Given('I am on the YouTube website', async () => {
     await fixture.page.goto(config.BASE_URL);

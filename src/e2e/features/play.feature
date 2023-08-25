@@ -3,13 +3,14 @@ Feature: YouTube Video Play
   I want to be able to play videos on YouTube
   So that I can watch the content
 
-  # Background:
-  #   Given go on to the YouTube
+  Background:
+    Given I am on the YouTube website
+    And I have a search bar
 
+  @search
   Scenario: Searching for and Playing a Video
-    When I search for the video "suzume ost"
-    And I select the video "Suzume (feat. Toaka)"
-    Then the video should start playing
+    When I search for the video "glass no hana"
+    And I play the video "[White Album] Glass no Hana - Ogata Rina"
     When the user clicks the "Pause" button
     Then the video should pause
     When the user selects a different video quality

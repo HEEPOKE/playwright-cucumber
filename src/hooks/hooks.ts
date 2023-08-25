@@ -26,7 +26,7 @@ async function setUpScenario({ pickle }: any) {
   fixture.logger = createLogger(optionsLogger({ scenarioName, level }));
 }
 
-async function goOn({ pickle }: any) {
+async function goOn({ pickle }) {
   const scenarioName = pickle.name + pickle.id
   context = await browser.newContext({
       recordVideo: {

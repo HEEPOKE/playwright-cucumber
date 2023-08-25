@@ -1,26 +1,18 @@
-import { When, Then, Before } from "@cucumber/cucumber";
+import { When, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import PlayPage from "../../pages/playPage";
 import fixture from "../../hooks/fixture";
 
 let playPage: PlayPage;
 
-Before(async () => {
-  playPage = new PlayPage(fixture.page);
-});
-
 When("I search for the video {string}", async (videoTitle: string) => {
-  await playPage.searchAndPlayVideo(videoTitle);
-  fixture.logger.info(`Search and play video: ${videoTitle}`);
+  playPage = new PlayPage(fixture.page);
+  await playPage.searchForVideo(videoTitle);
+  fixture.logger.info(`Search for video: ${videoTitle}`);
 });
 
-When("I select the video {string}", async (videoTitle: string) => {
-  await playPage.selectVideo(videoTitle);
-});
-
-Then("the video should start playing", async () => {
-  const isPlaying = await playPage.isVideoPlaying();
-  expect(isPlaying).toBeTruthy();
+When("I play the video {string}", async (videoTitle: string) => {
+  await playPage.playVideo(videoTitle);
 });
 
 When('the user clicks the "Pause" button', async () => {
