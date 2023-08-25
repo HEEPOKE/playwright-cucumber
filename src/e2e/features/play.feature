@@ -14,5 +14,5 @@ Feature: YouTube Video Play
     And the user skips ads
     When the user clicks the "Pause" button
     Then the video should pause
-    When the user selects a different video quality
+    And the user selects a different video quality
     Then the video quality should change accordingly

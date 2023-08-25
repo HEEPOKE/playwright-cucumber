@@ -27,7 +27,7 @@ When('the user clicks the "Pause" button', async () => {
 
 Then("the video should pause", async () => {
   const isPaused = await playPage.isVideoPaused();
-  expect(isPaused).toBeTruthy();
+  expect(isPaused).toBe(true);
 });
 
 When("the user selects a different video quality", async () => {
@@ -39,5 +39,5 @@ When("the user selects a different video quality", async () => {
 Then("the video quality should change accordingly", async () => {
   const newQuality = "720p";
   await playPage.checkVideoQuality(newQuality);
-  fixture.logger.info("Video quality changed accordingly");
+  fixture.logger.info(`Change video quality to ${newQuality}`);
 });
