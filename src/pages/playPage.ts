@@ -6,16 +6,20 @@ class PlayPage {
   }
 
   async searchForVideo(videoTitle: string) {
-    await this.page.fill("input#search", videoTitle);
-    await this.page.press("input#search", "Enter");
+    await this.page.fill("input#search-input", videoTitle);
+    await this.page.press("input#search-input", "Enter");
+    await this.page.click(`text="${videoTitle}"`);
+    await this.page.waitForSelector("video", { state: "visible" });
+    await this.page.waitForSelector("button.ytp-play-button", { state: "visible" });
   }
+
 
   async playVideo(videoTitle: string) {
     const videoSelector = `yt-formatted-string:has-text("${videoTitle}")`;
     await this.page.waitForSelector(videoSelector, { state: "visible", timeout: 60000 });
     const videoElement = await this.page.locator(videoSelector);
     await videoElement.click();
-    await this.page.waitForSelector("video", { state: "visible" });
+    await this.page.waitForSelector("video", { state: "visible", timeout: 10000 });
   }
 
   async isVideoPaused() {
