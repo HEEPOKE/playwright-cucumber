@@ -3,8 +3,10 @@ Feature: YouTube Video Play
   I want to be able to play videos on YouTube
   So that I can watch the content
 
+  Background:
+    Given go on to the YouTube
+
   Scenario: Searching for and Playing a Video
-    Given I am on the YouTube website
     When I search for the video "suzume ost"
     And I select the video "Suzume (feat. Toaka)"
     Then the video should start playing

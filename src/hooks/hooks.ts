@@ -26,6 +26,18 @@ async function setUpScenario({ pickle }: any) {
   fixture.logger = createLogger(optionsLogger({ scenarioName, level }));
 }
 
+async function goOn({ pickle }: any) {
+  const scenarioName = pickle.name + pickle.id
+  context = await browser.newContext({
+      recordVideo: {
+          dir: "results/videos",
+      },
+  });
+  const page = await context.newPage();
+  fixture.page = page;
+  fixture.logger = createLogger(optionsLogger({ scenarioName, level }));
+}
+
 async function tearDownScenario({ pickle, result }: any) {
   let videoPath: string;
   let img: Buffer;
@@ -50,5 +62,6 @@ async function closeBrowser() {
 
 BeforeAll(setUpBrowser);
 Before(setUpScenario);
+Before("@auth", goOn)
 After(tearDownScenario);
 AfterAll(closeBrowser);

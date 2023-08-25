@@ -2,8 +2,8 @@
   "compilerOptions": {
     // "target": "ESNext",
     // "module": "commonjs",
-    "moduleResolution": "Node",
+    // "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "typeRoots": ["./node_modules/@types", "src/helper/types"]
+    "typeRoots": ["./node_modules/@types"]
   }
 }
