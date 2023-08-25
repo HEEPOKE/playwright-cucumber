@@ -28,6 +28,12 @@ class PlayPage {
     });
   }
 
+  async skipAds() {
+    await this.page.waitForTimeout(6000);
+    const skipButton = this.page.locator("button.ytp-ad-skip-button");
+    await skipButton.click();
+  }
+
   async isVideoPaused() {
     const playButton = await this.page.locator("button.ytp-play-button");
     return !(await playButton.isEnabled());

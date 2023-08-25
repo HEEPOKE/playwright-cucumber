@@ -11,6 +11,7 @@ Feature: YouTube Video Play
   Scenario: Searching for and Playing a Video
     When I search for the video "glass no hana"
     And I play the video "[White Album] Glass no Hana - Ogata Rina"
+    And the user skips ads
     When the user clicks the "Pause" button
     Then the video should pause
     When the user selects a different video quality

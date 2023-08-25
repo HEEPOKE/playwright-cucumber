@@ -1,4 +1,4 @@
-import { When, Then } from "@cucumber/cucumber";
+import { When, Then, Given } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import PlayPage from "../../pages/playPage";
 import fixture from "../../hooks/fixture";
@@ -13,6 +13,11 @@ When("I search for the video {string}", async (videoTitle: string) => {
 
 When("I play the video {string}", async (videoTitle: string) => {
   await playPage.playVideo(videoTitle);
+});
+
+Given("the user skips ads", async () => {
+  await playPage.skipAds();
+  fixture.logger.info("Skipped ads");
 });
 
 When('the user clicks the "Pause" button', async () => {
