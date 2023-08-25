@@ -1,9 +1,13 @@
-import { When, Then } from "@cucumber/cucumber";
+import { When, Then, Before } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import PlayPage from "../../pages/playPage";
 import fixture from "../../hooks/fixture";
 
 let playPage: PlayPage;
+
+Before(async () => {
+  playPage = new PlayPage(fixture.page);
+});
 
 When("I search for the video {string}", async (videoTitle: string) => {
   await playPage.searchAndPlayVideo(videoTitle);

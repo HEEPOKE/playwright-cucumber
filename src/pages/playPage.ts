@@ -1,7 +1,9 @@
 import { Page, expect } from "@playwright/test";
 
 class PlayPage {
-  constructor(private page: Page) {}
+  constructor(private page: Page) {
+    this.page = page
+  }
 
   async waitForPlayButton() {
     await this.page.waitForSelector("button.ytp-play-button", {
@@ -10,8 +12,9 @@ class PlayPage {
   }
 
   async searchAndPlayVideo(videoTitle: string) {
-    await this.page.fill("input#search", videoTitle);
-    await this.page.press("input#search", "Enter");
+    // await this.page.fill("input#search", videoTitle);
+    // await this.page.press("input#search", "Enter");
+    await this.page.locator("input.ytd-searchbox").press(videoTitle);
     await this.page.click(`text="${videoTitle}"`);
     await this.page.waitForSelector("button.ytp-play-button");
   }

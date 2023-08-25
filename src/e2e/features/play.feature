@@ -3,8 +3,8 @@ Feature: YouTube Video Play
   I want to be able to play videos on YouTube
   So that I can watch the content
 
-  Background:
-    Given go on to the YouTube
+  # Background:
+  #   Given go on to the YouTube
 
   Scenario: Searching for and Playing a Video
     When I search for the video "suzume ost"
