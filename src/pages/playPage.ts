@@ -6,11 +6,11 @@ class PlayPage {
   }
 
   async searchForVideo(videoTitle: string) {
-    await this.page.fill("input#search-input", videoTitle);
-    await this.page.press("input#search-input", "Enter");
+    await this.page.fill("input#search", videoTitle);
+    await this.page.waitForSelector(`text="${videoTitle}"`);
+    await this.page.press("input#search", "Enter");
     await this.page.click(`text="${videoTitle}"`);
-    await this.page.waitForSelector("video", { state: "visible" });
-    await this.page.waitForSelector("button.ytp-play-button", { state: "visible" });
+    await this.page.waitForSelector("button.ytp-play-button");
   }
 
 
