@@ -1,6 +1,5 @@
 import fixture from "../hooks/fixture";
-import { Keyboard } from "./../../node_modules/playwright-core/types/types.d";
-import { Page, expect } from "@playwright/test";
+import { Page } from "@playwright/test";
 
 class PlayPage {
   constructor(private page: Page) {
