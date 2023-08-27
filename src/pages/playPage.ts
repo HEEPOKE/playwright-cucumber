@@ -1,5 +1,5 @@
-import fixture from "../hooks/fixture";
 import { Page } from "@playwright/test";
+import fixture from "../hooks/fixture";
 
 class PlayPage {
   constructor(private page: Page) {

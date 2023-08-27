@@ -1,10 +1,12 @@
+import constants from "../../constants/constants";
+
 const report = require("multiple-cucumber-html-reporter");
 
 report.generate({
   jsonDir: "results",
   reportPath: "results/reports/",
-  reportName: "Playwright Automation Report",
-  pageTitle: "Youtube test report",
+  reportName: constants.REPORT_NAME,
+  pageTitle: constants.PAGE_TITLE,
   displayDuration: false,
   metadata: {
     browser: {
