@@ -7,7 +7,7 @@ Feature: YouTube Video Play
     Given I am on the YouTube website
     And I have a search bar
 
-  @search
+  @play
   Scenario: Searching for and Playing a Video
     When I search for the video "glass no hana"
     And I play the video "[White Album] Glass no Hana - Ogata Rina"

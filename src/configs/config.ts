@@ -20,7 +20,6 @@ const config: ConfigEnvironment = {
   BASE_URL: process.env.BASE_URL || "",
   BROWSER: process.env.BROWSER || "chrome",
   HEAD: process.env.HEAD || true,
-  SEARCH_SONG: process.env.SEARCH_SONG || "",
 };
 
 export default config;
