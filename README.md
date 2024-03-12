@@ -24,6 +24,12 @@ yarn
 
 - can config cucumber go to ```src/configs/cucumber.js``` for config
 
+## Install
+
+```bash
+npx playwright install
+```
+
 ## Run
 
 - Test
