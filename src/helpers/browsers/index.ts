@@ -1,25 +1,25 @@
-import { LaunchOptions, chromium, firefox, webkit } from 'playwright-core';
-import config from '../../configs/config';
+import { LaunchOptions, chromium, firefox, webkit } from 'playwright-core'
+import config from '../../configs/config'
 
 const options: LaunchOptions = {
-  headless: !true
-};
+  headless: false,
+}
 
 const browserLaunchers = {
   chrome: chromium,
   firefox: firefox,
-  safari: webkit
-};
+  safari: webkit,
+}
 
 const invokeBrowser = () => {
-  const browserType = config.BROWSER || 'chrome';
+  const browserType = config.BROWSER || 'chrome'
 
-  const browserLauncher = browserLaunchers[browserType];
+  const browserLauncher = browserLaunchers[browserType]
   if (!browserLauncher) {
-    throw new Error('Please set the proper browser!');
+    throw new Error('Please set the proper browser!')
   }
 
-  return browserLauncher.launch(options);
-};
+  return browserLauncher.launch(options)
+}
 
-export default invokeBrowser;
+export default invokeBrowser
