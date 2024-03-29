@@ -4,7 +4,7 @@ import config from './src/configs/config'
 export default defineConfig({
   testDir: './src/e2e/steps',
   reporter: [['html', { outputFolder: 'results' }]],
-  //   testMatch: ['./src/e2e/features/*.feature'],
+  testMatch: ['./src/e2e/features/*.feature'],
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
