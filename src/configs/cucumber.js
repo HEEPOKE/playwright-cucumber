@@ -5,7 +5,7 @@ module.exports = {
     },
     paths: ['src/e2e/features/'],
     dryRun: false,
-    require: ['src/e2e/steps/*.spec.ts', 'src/hooks/hooks.ts'],
+    require: ['src/e2e/steps/*.ts', 'src/hooks/hooks.ts'],
     requireModule: ['ts-node/register'],
     format: [
       'progress-bar',
